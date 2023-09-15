@@ -9,14 +9,27 @@ const currentTodos = [
     { id: 3, text: 'run the frog', completed: false },
     { id: 5, text: 'run the elephant', completed: true },
 ]
+
+
+
 export const TodoList = () => {
     const [todos, setTodos] = useState(currentTodos)
 
+    const removeTodo = (id) => {
+        setTodos(prevTodo => {
+            return prevTodo.filter(t => t.id !== id)
+        })
+    }
+
     return (
         <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
-            {todos.map(todo => {
-                return <TodoItem key={todo.id} todo={todo} />
-            })}
+            {todos.map(todo => (
+                <TodoItem
+                    key={todo.id}
+                    todo={todo}
+                    removeTodo={() => removeTodo(todo.id)}
+                />
+            ))}
         </List>
     )
 }
