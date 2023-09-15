@@ -21,6 +21,18 @@ export const TodoList = () => {
         })
     }
 
+    const toggleTodo = (id) => {
+        setTodos(prevTodo => {
+            return prevTodo.map(todo => {
+                if (todo.id === id) {
+                    return { ...todo, completed: !todo.completed }
+                } else {
+                    return todo
+                }
+            })
+        })
+    }
+
     return (
         <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
             {todos.map(todo => (
@@ -28,6 +40,7 @@ export const TodoList = () => {
                     key={todo.id}
                     todo={todo}
                     removeTodo={() => removeTodo(todo.id)}
+                    toggle={() => toggleTodo(todo.id)}
                 />
             ))}
         </List>
@@ -37,21 +50,3 @@ export const TodoList = () => {
 
 
 
-// export default function CheckboxList() {
-//   const [checked, setChecked] = useState([0]);
-
-//   const handleToggle = (value) => () => {
-//     const currentIndex = checked.indexOf(value);
-//     const newChecked = [...checked];
-
-//     if (currentIndex === -1) {
-//       newChecked.push(value);
-//     } else {
-//       newChecked.splice(currentIndex, 1);
-//     }
-
-//     setChecked(newChecked);
-//   };
-
-
-// }
