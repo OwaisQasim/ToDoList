@@ -1,11 +1,12 @@
 import './App.css'
+import Navbar from './Navbar'
 import { TodoList } from './TodoList'
 
 function App() {
 
   return (
     <>
-      <h1>Todos</h1>
+      <Navbar />
       <TodoList />
     </>
   )

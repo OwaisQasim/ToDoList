@@ -2,6 +2,8 @@ import { useEffect, useState } from "react"
 import List from '@mui/material/List';
 import { TodoItem } from "./TodoItem";
 import TodoForm from './TodoForm';
+import { Box } from "@mui/material";
+
 
 const getInitialData = () => {
     const data = JSON.parse(localStorage.getItem('todos'))
@@ -43,17 +45,24 @@ export const TodoList = () => {
     }
 
     return (
-        <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
-            {todos.map(todo => (
-                <TodoItem
-                    key={todo.id}
-                    todo={todo}
-                    removeTodo={() => removeTodo(todo.id)}
-                    toggle={() => toggleTodo(todo.id)}
-                />
-            ))}
-            <TodoForm addTodo={addTodo} />
-        </List>
+        <Box sx={{
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            mt: 5
+        }}>
+            <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
+                {todos.map(todo => (
+                    <TodoItem
+                        key={todo.id}
+                        todo={todo}
+                        removeTodo={() => removeTodo(todo.id)}
+                        toggle={() => toggleTodo(todo.id)}
+                    />
+                ))}
+                <TodoForm addTodo={addTodo} />
+            </List>
+        </Box>
     )
 }
 
