@@ -3,6 +3,8 @@ import List from '@mui/material/List';
 import { TodoItem } from "./TodoItem";
 import TodoForm from './TodoForm';
 import { Box } from "@mui/material";
+import Typography from '@mui/material/Typography';
+
 
 
 const getInitialData = () => {
@@ -49,8 +51,10 @@ export const TodoList = () => {
             display: 'flex',
             justifyContent: 'center',
             alignItems: 'center',
-            mt: 5
+            mt: 5,
+            flexDirection: 'column'
         }}>
+            <Typography variant="h2" component="h2">Todos</Typography>
             <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
                 {todos.map(todo => (
                     <TodoItem
