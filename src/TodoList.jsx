@@ -1,7 +1,7 @@
 import { useState } from "react"
 import List from '@mui/material/List';
 import { TodoItem } from "./TodoItem";
-
+import TodoForm from './TodoForm';
 
 const currentTodos = [
     { id: 1, text: 'Run the cat', completed: false },
@@ -33,6 +33,12 @@ export const TodoList = () => {
         })
     }
 
+    const addTodo = (text) => {
+        setTodos(prevText => {
+            return [...prevText, { text: text, id: 8, completed: false }]
+        })
+    }
+
     return (
         <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
             {todos.map(todo => (
@@ -43,6 +49,7 @@ export const TodoList = () => {
                     toggle={() => toggleTodo(todo.id)}
                 />
             ))}
+            <TodoForm addTodo={addTodo} />
         </List>
     )
 }
